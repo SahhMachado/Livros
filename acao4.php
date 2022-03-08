@@ -64,7 +64,7 @@
 
         $titulo = $dados['titulo'];
         $genero = $dados['genero'];
-        $anoPublicacao = $dados['no$anoPublicacao'];
+        $anoPublicacao = $dados['anoPublicacao'];
         $autor = $dados['autor'];
         $valor = $dados['valor'];
         $idE = $dados['idE'];
@@ -85,7 +85,7 @@
     // Busca um item pelo código no BD
     function buscarDados($idL){
         $pdo = Conexao::getInstance();
-        $consulta = $pdo->query("SELECT * FROM compra WHERE idL= $idL");
+        $consulta = $pdo->query("SELECT * FROM livro WHERE idL= $idL");
         $dados = array();
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $dados['idL'] = $linha['idL'];

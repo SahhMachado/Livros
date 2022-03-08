@@ -20,7 +20,7 @@
     	} 
     </script>
     <?php
-    include_once "acao.php";
+    include_once "acao4.php";
     $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
     $dados;
     if ($acao == 'editar'){
