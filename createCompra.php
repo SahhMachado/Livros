@@ -60,16 +60,20 @@
         </div> 
 
         <div class="form-group">
-        <label for="dataCompra">DATA:</label><br>
-           <input required=true name="dataCompra" id="dataCompra" type="text" value="<?php if ($acao == "editar") echo $dados['dataCompra']; ?>"><br>
-        </div> 
+        <label>USUÁRIO:</label>
+        <br>
+        <select name="idU" id="idU">
+           <?php
+           $pdo = Conexao::getInstance();
+           $consulta = $pdo->query("SELECT idU, nome FROM usuario");
+           while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { ?>
 
-        <select name="usuarios" id="idU">
-           <option value="1">Anne</option>
-           <option value="2">Bonnie</option>
-           <option value="3">Carls</option>
-           <option value="4">Denny</option>
+           <option value="<?php echo $linha['idU']?>"> <?php if ($acao == "editar") $linha['nome'];?>
+           <?php echo $linha['nome'];?>
+         </option>
+         <?php } ?>
         </select>
+        </div>
 <br><br>
         <button name="acao" value="salvar" id="acao" type="submit" 
         onclick="return validaPagina();">

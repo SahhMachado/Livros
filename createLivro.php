@@ -80,9 +80,21 @@
         </div>
 
         <div class="form-group">
-        <label for="editora">EDITORA:</label><br>
-           <input required=true name="idE" id="idE" type="text" value="<?php if ($acao == "editar") echo $dados['idE'];?>"><br>
+        <label>EDITORA:</label>
+        <br>
+        <select name="idE" id="idE">
+           <?php
+           $pdo = Conexao::getInstance();
+           $consulta = $pdo->query("SELECT idE, nome FROM editora");
+           while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { ?>
+
+           <option value="<?php echo $linha['idE']?>"> <?php if ($acao == "editar") $dados['idE'];?>
+           <?php echo $linha['nome'];?>
+         </option>
+         <?php } ?>
+        </select>
         </div>
+        <br><br>
         <button name="acao" value="salvar" id="acao" type="submit" 
         onclick="return validaPagina();">
                 Salvar

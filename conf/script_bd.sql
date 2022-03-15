@@ -18,6 +18,7 @@ INSERT INTO `livros`.`usuario` (`nome`, `dataNascimento`, `email`, `senha`, `tel
 CREATE TABLE `editora` (
   `idE` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
+  `cidade` varchar(45),
   `dataFundacao` date,
   PRIMARY KEY (`idE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -55,9 +56,16 @@ INSERT INTO `livros`.`livro` (`titulo`, `genero`, `anoPublicacao`, `autor`, `val
 INSERT INTO `livros`.`livro` (`titulo`, `genero`, `anoPublicacao`, `autor`, `valor`, `idE`) VALUES ('Efgg', 'Ficção Científica', '20100908', 'Mars', '30.45', '4');
 
 CREATE TABLE `contato` (
-  `telefone` varchar(45) NOT NULL,
-  `email` varchar(100) DEFAULT NULL NOT NULL,
-  `idE` int(11) NOT NULL,
+  `idT` int(11) NOT NULL AUTO_INCREMENT,
+  `telefone` varchar(45),
+  `email` varchar(100),
+  `idE` int(11),
+  PRIMARY KEY (`idT`),
   FOREIGN KEY (`idE`) REFERENCES `editora` (`idE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(47) 988-090-900', 'abc@gmail.com', '1');
+INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(54) 988-905-040', 'cde@gmail.com', '2');
+INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(11) 988-456-709', 'def@gmail.com', '3');
+INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(47) 988-546-789', 'efg@gmail.com', '4');
 
