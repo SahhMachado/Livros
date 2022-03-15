@@ -69,3 +69,16 @@ INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(54) 988-90
 INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(11) 988-456-709', 'def@gmail.com', '3');
 INSERT INTO `livros`.`contato` (`telefone`, `email`, `idE`) VALUES ('(47) 988-546-789', 'efg@gmail.com', '4');
 
+CREATE TABLE `compra_has_livro` (
+  `idC` INT NOT NULL,
+  `idL` INT NOT NULL,
+  PRIMARY KEY (`idC`, `idL`),
+  INDEX `fk_compra_has_livro_livro1_idx` (`idL` ASC),
+  INDEX `fk_compra_has_livro_compra1_idx` (`idC` ASC),
+  CONSTRAINT `fk_compra_has_livro_compra1`
+    FOREIGN KEY (`idC`)
+    REFERENCES `compra` (`idC`),
+    CONSTRAINT `fk_compra_has_livro_livro1`
+    FOREIGN KEY (`idL`)
+    REFERENCES `livro` (`idL`)
+)ENGINE = InnoDB;
